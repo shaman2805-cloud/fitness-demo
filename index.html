@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fitness Club Demo</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div>
+        <div class="eyebrow">FITNESS CLUB</div>
+        <h1 id="page-title">Главная</h1>
+      </div>
+      <div class="avatar">Б</div>
+    </header>
+
+    <main>
+      <section class="screen active" data-screen="home">
+        <div class="hero-card">
+          <div>
+            <span class="badge">PREMIUM</span>
+            <h2>Добро пожаловать 👋</h2>
+            <p>Абонемент действует до 25 сентября</p>
+          </div>
+          <button class="primary">Продлить</button>
+        </div>
+
+        <div class="section-head">
+          <h3>Ближайшая тренировка</h3>
+          <span>Сегодня</span>
+        </div>
+
+        <div class="card workout-card">
+          <div>
+            <strong>Functional Training</strong>
+            <p>18:00 · Тренер Арман</p>
+            <small>Осталось 4 места</small>
+          </div>
+          <button class="primary book-btn" onclick="toggleBooking(this)">Записаться</button>
+        </div>
+
+        <div class="stats">
+          <div class="stat"><strong>12</strong><span>тренировок</span></div>
+          <div class="stat"><strong>78 кг</strong><span>вес</span></div>
+          <div class="stat"><strong>75 кг</strong><span>цель</span></div>
+        </div>
+
+        <div class="section-head">
+          <h3>Быстрый доступ</h3>
+        </div>
+        <div class="quick-grid">
+          <button onclick="goTo('schedule')">📅<span>Расписание</span></button>
+          <button onclick="goTo('trainers')">🏋️<span>Тренеры</span></button>
+          <button onclick="goTo('progress')">📈<span>Прогресс</span></button>
+          <button onclick="alert('Магазин добавим следующим этапом')">🛍️<span>Мерч</span></button>
+        </div>
+      </section>
+
+      <section class="screen" data-screen="schedule">
+        <div class="days">
+          <button class="day active">Сегодня</button>
+          <button class="day">Ср</button>
+          <button class="day">Чт</button>
+          <button class="day">Пт</button>
+          <button class="day">Сб</button>
+        </div>
+
+        <div class="list-card">
+          <div>
+            <span class="time">18:00</span>
+            <strong>Functional Training</strong>
+            <p>Арман · 4 места</p>
+          </div>
+          <button class="small-btn" onclick="toggleBooking(this)">Записаться</button>
+        </div>
+        <div class="list-card">
+          <div>
+            <span class="time">19:30</span>
+            <strong>Stretching</strong>
+            <p>Алина · 7 мест</p>
+          </div>
+          <button class="small-btn" onclick="toggleBooking(this)">Записаться</button>
+        </div>
+        <div class="list-card">
+          <div>
+            <span class="time">20:00</span>
+            <strong>Boxing</strong>
+            <p>Данияр · 2 места</p>
+          </div>
+          <button class="small-btn" onclick="toggleBooking(this)">Записаться</button>
+        </div>
+      </section>
+
+      <section class="screen" data-screen="trainers">
+        <div class="trainer-card">
+          <div class="trainer-photo">A</div>
+          <div class="trainer-info">
+            <h3>Арман Садыков</h3>
+            <p>Силовой и функциональный тренинг</p>
+            <span>★ 4.9 · 6 лет опыта</span>
+            <button class="primary" onclick="alert('Запись к Арману: 17:00, 19:00, 20:30')">Записаться</button>
+          </div>
+        </div>
+
+        <div class="trainer-card">
+          <div class="trainer-photo">А</div>
+          <div class="trainer-info">
+            <h3>Алина Ким</h3>
+            <p>Stretching и мобильность</p>
+            <span>★ 4.8 · 5 лет опыта</span>
+            <button class="primary" onclick="alert('Запись к Алине: 15:00, 18:30')">Записаться</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="screen" data-screen="progress">
+        <div class="progress-card">
+          <span>Тренировки за месяц</span>
+          <strong>12</strong>
+          <div class="bar"><div style="width:72%"></div></div>
+          <small>Цель: 16 тренировок</small>
+        </div>
+
+        <div class="progress-card">
+          <span>Вес</span>
+          <strong>78 кг</strong>
+          <div class="trend">↓ 2.4 кг за 30 дней</div>
+        </div>
+
+        <div class="progress-card">
+          <span>Личная цель</span>
+          <strong>75 кг</strong>
+          <p>Осталось 3 кг до цели</p>
+        </div>
+      </section>
+
+      <section class="screen" data-screen="profile">
+        <div class="profile-card">
+          <div class="big-avatar">Б</div>
+          <h2>Батырхан</h2>
+          <p>Premium Member</p>
+        </div>
+
+        <button class="menu-row">Мой абонемент <span>›</span></button>
+        <button class="menu-row">Мои записи <span>›</span></button>
+        <button class="menu-row">История посещений <span>›</span></button>
+        <button class="menu-row">Настройки <span>›</span></button>
+      </section>
+    </main>
+
+    <nav class="bottom-nav">
+      <button class="nav-item active" data-target="home" onclick="goTo('home')">⌂<span>Главная</span></button>
+      <button class="nav-item" data-target="schedule" onclick="goTo('schedule')">▦<span>Расписание</span></button>
+      <button class="nav-item" data-target="trainers" onclick="goTo('trainers')">♟<span>Тренеры</span></button>
+      <button class="nav-item" data-target="progress" onclick="goTo('progress')">↗<span>Прогресс</span></button>
+      <button class="nav-item" data-target="profile" onclick="goTo('profile')">●<span>Профиль</span></button>
+    </nav>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
